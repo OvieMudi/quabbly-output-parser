@@ -8,6 +8,7 @@ import fastifyStatic from 'fastify-static';
 dotenv.config();
 
 const PORT = process.env.PORT || 3001;
+const HOST = '0.0.0.0' || 'localhost';
 const app = fastify({ logger: false });
 
 app.register(fastifyStatic, {
@@ -21,6 +22,6 @@ app.get('*', (req, res) => {
   res.type('text/html').send(stream);
 });
 
-app.listen(PORT).then(() => {
+app.listen(PORT, HOST).then(() => {
   console.log('Listening on port', PORT);
 });
