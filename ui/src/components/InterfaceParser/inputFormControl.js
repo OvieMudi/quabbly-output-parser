@@ -5,7 +5,7 @@ function InputFormControl({ getParsedData }) {
   const [inputText, setInputText] = useState('');
   const [inputTouched, setInputTouched] = useState(false);
 
-  const isError = inputTouched && inputText === '';
+  const isError = inputTouched && inputText.trim() === '';
 
   const handleInputChange = (e) => setInputText(e.target.value);
 
@@ -16,7 +16,6 @@ function InputFormControl({ getParsedData }) {
   };
 
   const handleClick = (event) => {
-    console.log('handleSubmit ~ event', event);
     event.preventDefault();
     if (!isError) {
       getParsedData(inputText);
@@ -32,7 +31,7 @@ function InputFormControl({ getParsedData }) {
         type="interface"
         value={inputText}
         placeholder="Paste your interface here"
-        size="lg"
+        size="sm"
         rows={5}
         required
         onChange={handleInputChange}
