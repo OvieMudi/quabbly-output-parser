@@ -1,0 +1,14 @@
+.Home {
+  padding: 2rem;
+  max-width: 840px;
+  margin: 0 auto;
+
+  content: {
+    font-size: calc(10px + 2vmin);
+  }
+
+  .title {
+    height: 25px;
+    pointer-events: none;
+  }
+}
