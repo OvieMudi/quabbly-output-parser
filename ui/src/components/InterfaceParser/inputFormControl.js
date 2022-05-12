@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import { Textarea, FormControl, FormLabel, FormErrorMessage, Button } from '@chakra-ui/react';
 
-function InputFormControl({ getParsedData }) {
+function InputFormControl({ getParsedData, hasApiError, setHasApiError }) {
   const [inputText, setInputText] = useState('');
   const [inputTouched, setInputTouched] = useState(false);
 
-  const isError = inputTouched && inputText.trim() === '';
+  const textContent = inputText.trim();
+  const isError = (inputTouched && !textContent) || hasApiError;
 
-  const handleInputChange = (e) => setInputText(e.target.value);
+  const handleInputChange = (e) => {
+    setInputText(e.target.value);
+    if (hasApiError) {
+      setHasApiError(false);
+    }
+  };
 
   const handleFocus = () => {
     if (!inputTouched) {
@@ -17,7 +23,7 @@ function InputFormControl({ getParsedData }) {
 
   const handleClick = (event) => {
     event.preventDefault();
-    if (!isError) {
+    if (!isError && textContent) {
       getParsedData(inputText);
     }
   };
@@ -25,7 +31,9 @@ function InputFormControl({ getParsedData }) {
   return (
     // <form onSubmit={handleSubmit}>
     <FormControl isInvalid={isError}>
-      <FormLabel color="whiteAlpha.600" htmlFor="interface">Interface</FormLabel>
+      <FormLabel color="whiteAlpha.600" htmlFor="interface">
+        Interface
+      </FormLabel>
       <Textarea
         id="interface"
         type="interface"
