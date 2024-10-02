@@ -9,7 +9,7 @@
 
 ## About <a name = "about"></a>
 
-An small in-house tool for cutting the manual activity of creating Quabbly's capability and trigger outputs.
+A small in-house tool for cutting the manual activity of creating Quabbly's capability and trigger outputs.
 
 ## Getting Started <a name = "getting_started"></a>
 
@@ -21,7 +21,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
+A step-by-step series of examples that tell you how to get a development env running.
 
 Clone and install dependencies
 
